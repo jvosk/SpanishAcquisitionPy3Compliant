@@ -26,16 +26,26 @@ where ENVNAME is a name for the environment (e.g. `spacq`,
 for a full command of `mkvirtualenv -a . --python=/usr/bin/python3 spaqc`). 
 The purpose of this virtual environment is to protect the installation from any changes to system-wide installed packages.
 
+With a virtual environment created, *everything* to interact with Spanish Acquisition will be done *inside* the environment; to activate the environment, use `workon ENVNAME` -- to deactivate it, use `deactivate` 
+Again, *everything* to interact with Spanish Acquisition (running tests, installing dependencies, running acquisition.py) *should/must* be done inside the virtual environment.
+
+With Python properly installed, the first hurdle is installing
+
 ## wxPython-Phoenix
 
 See [wxWidgets/Phoenix](https://github.com/wxWidgets/Phoenix) for a full outline of wxPython-Phoenix's dependencies
 
 Using
-```sudo apt-get install dpkg-dev build-essential python3-dev libwebkitgtk-dev libjpeg-dev libtiff-dev libgtk2.0-dev libsdl1.2-dev libgstreamer-plugins-base0.10-dev libnotify-dev freeglut3 freeglut3-dev```
+```
+sudo apt-get install dpkg-dev build-essential python3-dev libwebkitgtk-dev libjpeg-dev libtiff-dev libgtk2.0-dev libsdl1.2-dev libgstreamer-plugins-base0.10-dev libnotify-dev freeglut3 freeglut3-dev
+```
 *should* install all the required dependencies to build wxPhoenix.
 
 Once those dependencies are installed, download the wxPhoenix source tarball from [Phoenix snapshot builds](https://wxpython.org/Phoenix/snapshot-builds/) -- you want the .tar.gz file with the latest release date -- should have a name along the lines of wxPython_Phoenix-*number*.dev*number*+*hexadecimal*.tar.gz
 
-Extract that tarball, then inside from a terminal while in that directory (e.g. `cd *extracted directory*`) run `python build.py dox etg --nodoc sip build`
+Extract that tarball, then inside from a terminal while in that directory (e.g. `cd *extracted directory*`) run 
+`python build.py dox etg --nodoc sip build`
 
 _*Note*_: This will take a *long* time. For me, over an hour on a two-core laptop. AFAIK, there are no available pre-built wheels. Much apologies. Such sorry. (Many doge.)
+
+*Note 2*: `python build.py dox etg --nodoc sip build`, like all other commands with respect to Spanish Acquisition, must be run from inside the virtual environment.
