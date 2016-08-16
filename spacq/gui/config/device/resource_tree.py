@@ -1,4 +1,4 @@
-from functools import partial
+from functools import partial, cmp_to_key
 from threading import Thread
 import wx
 from wx.lib.agw.hypertreelist import HyperTreeList
@@ -200,6 +200,15 @@ class ResourceTree(HyperTreeList):
 
 		if root == self.root:
 			self.spawn_fetch_thread(self.GetChildren(self.root))
+
+	def SortChildren(self, item):
+		children = item.GetChildren()
+
+		if len(children) > 1:
+			self._dirty = True
+			children.sort(key=cmp_to_key(self.OnCompareItems))
+			item._children = children
+
 
 	def set_value(self, item, value, error_callback=None):
 		"""

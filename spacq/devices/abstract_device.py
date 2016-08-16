@@ -95,6 +95,8 @@ class SuperDevice(object):
 		"""
 		Post-connection setup.
 		"""
+		print("Visa imported: {}".format("yes" if drivers.pyvisa in available_drivers else "no"))
+		print("Driver: {driver}\nDevice: {device}".format(driver=self.driver,device=self.device))
 
 		if hasattr(self, 'driver') and self.driver == drivers.lgpib:
 			# Some devices don't assert the EOI line, so look for their EOS character instead.
@@ -163,7 +165,15 @@ class AbstractDevice(SuperDevice):
 			else:
 				raise NotImplementedError('PyVISA required, but not available.')
 		elif gpib_pad is not None:
-			if drivers.lgpib in available_drivers:
+			if drivers.pyvisa in available_drivers:
+				log.debug('Using PyVISA with gpib_board="{0}", gpib_pad="{1}", '
+						'gpib_sad="{2}".'.format(gpib_board, gpib_pad, gpib_sad))
+				self.driver = drivers.pyvisa
+				self.connection_resource = {
+					#'resource_name': 'gpib{0}::{1}::{2}::instr'.format(gpib_board, gpib_pad, gpib_sad),
+					'resource_name': 'gpib{0}::{1}::instr'.format(gpib_board, gpib_pad),
+				}
+			elif drivers.lgpib in available_drivers:
 				log.debug('Using Linux GPIB with gpib_board="{0}", gpib_pad="{1}", '
 						'gpib_sad="{2}".'.format(gpib_board, gpib_pad, gpib_sad))
 				self.driver = drivers.lgpib
@@ -171,13 +181,6 @@ class AbstractDevice(SuperDevice):
 					'name': gpib_board,
 					'pad': gpib_pad,
 					'sad': gpib_sad,
-				}
-			elif drivers.pyvisa in available_drivers:
-				log.debug('Using PyVISA with gpib_board="{0}", gpib_pad="{1}", '
-						'gpib_sad="{2}".'.format(gpib_board, gpib_pad, gpib_sad))
-				self.driver = drivers.pyvisa
-				self.connection_resource = {
-					'resource_name': 'gpib{0}::{1}::{2}::instr'.format(gpib_board, gpib_pad, gpib_sad),
 				}
 			else:
 				raise NotImplementedError('Linux GPIB or PyVISA required, but not available.')
@@ -232,7 +235,7 @@ class AbstractDevice(SuperDevice):
 				self.device = resource_manager.open_resource(**self.connection_resource)
 			except visa.VisaIOError as e:
 				raise DeviceNotFoundError('Could not open device at "{0}".'.format(self.connection_resource), e)
-
+		log.info('Connected to device {}'.format(self.device))
 		try:
 			self._connected()
 		except Exception as e:
