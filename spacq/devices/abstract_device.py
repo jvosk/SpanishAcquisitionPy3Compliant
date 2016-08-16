@@ -95,9 +95,7 @@ class SuperDevice(object):
 		"""
 		Post-connection setup.
 		"""
-		print("Visa imported: {}".format("yes" if drivers.pyvisa in available_drivers else "no"))
-		print("Driver: {driver}\nDevice: {device}".format(driver=self.driver,device=self.device))
-
+		
 		if hasattr(self, 'driver') and self.driver == drivers.lgpib:
 			# Some devices don't assert the EOI line, so look for their EOS character instead.
 			if hasattr(self, 'eos_char'):
