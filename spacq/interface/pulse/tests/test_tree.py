@@ -201,7 +201,7 @@ class InvalidTreeTest(TestCase):
 			repeat = 6 s
 			repeat = 2.0
 			zzz1 = 5 ms
-			zzz1.foo = 5 ms
+			zzz1.bar = 5 ms
 			ghi1.something_else = 5
 
 			times 5 {

@@ -72,6 +72,7 @@ class Mockch6VoltageSource(MockAbstractDevice, ch6VoltageSource):
 		elif message.startswith('0000 0014 0010 0111 0260 0000 0003 '):
 			m = re.match('0000 0014 0010 0111 0260 0000 0003 ([0-9a-f]{2})00 ([0-9a-f ]{9})', message)
 			len = int(m.group(1), 6)
+			self.mock_state['port'] = int(m.group(1), 6)
 			cmd = ''.join(['{0:08b}'.format(~ord(x) & 0xff) for x in BinaryEncoder.encode(m.group(2))[:len]])
 
 			# Destructure the command.

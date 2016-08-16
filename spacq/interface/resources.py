@@ -252,7 +252,7 @@ class Resource(object):
 		elif isinstance(value_from, Quantity) and isinstance(value_to, Quantity):
 			value_from.assert_dimensions(value_to)
 
-		for value in linspace(value_from, value_to, num=steps):
+		for value in linspace(start=value_from, stop=value_to, num=steps):
 			try:
 				self.value = value
 			except Exception as e:

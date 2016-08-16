@@ -155,12 +155,12 @@ class Port(AbstractSubdevice):
 		self.device.ask_encoded('0000 000c 0008 0100 0000 0000',
 				'0000 001c 0018 0100 0000 0002 0200 1000 0100 c001 0100 c000 0002 0000')
 		log.debug('Ask: 0000 000c 0008 0100 0000 0000 \n Receive: 0000 001c 0018 0100 0000 0002 0200 1000 0100 c001 0100 c000 0002 0000')
-		self.device.ask_encoded('0000 0014 0010 0110 0260 0000 00 {0:02x} {1:04x} 0700 0000'.format(self.num, self.freq),
+		self.device.ask_encoded('0000 0014 0010 0110 0260 0000 00{0:02x} {1:04x} 0700 0000'.format(self.num, self.freq),
 				'0000 000c 0008 0100 0000 0002')
-		log.debug('Ask: 0000 0014 0010 0110 0260 0000 00 {0:02x} {1:04x} 0700 0000 \n Receive: 0000 000c 0008 0100 0000 0002'.format(self.num, self.freq))
-		self.device.ask_encoded('0000 0014 0010 0111 0260 0000 0003 {0:02x} 00 {1}'.format(message_length,message_formatted),
-				'0000 0014 0010 0100 0000 0002 {0:02x} 00 0000 {1}'.format(message_length, expected_reply))
-		log.debug('Ask: 0000 0014 0010 0111 0260 0000 0003 {0:02x} 00 {1} \n Receive: 0000 0014 0010 0100 0000 0002 {2:02x} 00 0000 {3}'.format(message_length,message_formatted,message_length, expected_reply))
+		log.debug('Ask: 0000 0014 0010 0110 0260 0000 00{0:02x} {1:04x} 0700 0000 \n Receive: 0000 000c 0008 0100 0000 0002'.format(self.num, self.freq))
+		self.device.ask_encoded('0000 0014 0010 0111 0260 0000 0003 {0:02x}00 {1}'.format(message_length,message_formatted),
+				'0000 0014 0010 0100 0000 0002 {0:02x}00 0000 {1}'.format(message_length, expected_reply))
+		log.debug('Ask: 0000 0014 0010 0111 0260 0000 0003 {0:02x}00 {1} \n Receive: 0000 0014 0010 0100 0000 0002 {2:02x} 00 0000 {3}'.format(message_length,message_formatted,message_length, expected_reply))
 
 	def apply_settings(self, calibrate=False):
 		"""

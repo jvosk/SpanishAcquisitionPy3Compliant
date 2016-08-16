@@ -240,7 +240,7 @@ class ParameterPanel(ScrolledPanel):
 		parameters = self.extract_parameters(prog)
 
 		# Panel.
-		self.parameter_sizer = wx.GridBagSizer(hgap=5)
+		self.parameter_sizer = wx.GridBagSizer(5)
 
 		self.parameter_sizer.AddGrowableCol(self.input_col, 1)
 		if self.use_resource_labels:

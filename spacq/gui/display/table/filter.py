@@ -21,7 +21,7 @@ class FilterEditDialog(Dialog):
 		dialog_box = wx.BoxSizer(wx.VERTICAL)
 
 		## Inputs.
-		input_sizer = wx.FlexGridSizer(rows=2, cols=2, hgap=5)
+		input_sizer = wx.FlexGridSizer(2, 2, 5)
 		input_sizer.AddGrowableCol(1, 1)
 		dialog_box.Add(input_sizer, proportion=1, flag=wx.EXPAND|wx.ALL, border=5)
 

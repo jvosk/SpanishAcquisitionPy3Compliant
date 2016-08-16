@@ -44,7 +44,7 @@ class ScalingSettingsDialog(Dialog):
 		dialog_box = wx.BoxSizer(wx.VERTICAL)
 
 		## Settings.
-		settings_box = wx.FlexGridSizer(rows=3, cols=2, hgap=5)
+		settings_box = wx.FlexGridSizer(3, 2, 5)
 		dialog_box.Add(settings_box, flag=wx.EXPAND|wx.ALL, border=5)
 
 		### Linear scale.

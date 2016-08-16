@@ -98,7 +98,7 @@ class DataCaptureDialog(Dialog, SweepController):
 		dialog_box.Add(self.status_message_output, flag=wx.EXPAND)
 
 		## Values.
-		self.values_box = wx.FlexGridSizer(rows=len(self.variables), cols=2, hgap=20)
+		self.values_box = wx.FlexGridSizer(len(self.variables), 2, 20)
 		self.values_box.AddGrowableCol(1, 1)
 		dialog_box.Add(self.values_box, flag=wx.EXPAND|wx.ALL, border=5)
 
@@ -136,7 +136,7 @@ class DataCaptureDialog(Dialog, SweepController):
 			self.values_box.Add(input, flag=wx.EXPAND)
 
 		## Times.
-		times_box = wx.FlexGridSizer(rows=2 if self.show_remaining_time else 1, cols=2, hgap=5)
+		times_box = wx.FlexGridSizer(2 if self.show_remaining_time else 1, 2, 5)
 		dialog_box.Add(times_box, proportion=1, flag=wx.CENTER|wx.ALL, border=15)
 
 		### Elapsed.

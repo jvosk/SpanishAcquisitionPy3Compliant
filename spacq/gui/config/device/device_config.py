@@ -49,7 +49,7 @@ class DeviceConfigPanel(wx.Panel):
 		self.address_mode_eth = wx.RadioButton(self, label='Ethernet', style=wx.RB_GROUP)
 		ethernet_box.Add(self.address_mode_eth)
 
-		ethernet_sizer = wx.FlexGridSizer(rows=2, cols=2, hgap=5)
+		ethernet_sizer = wx.FlexGridSizer(2, 2, 5)
 		ethernet_box.Add(ethernet_sizer, flag=wx.EXPAND)
 
 		ethernet_sizer.Add(wx.StaticText(self, label='IP address:'),
@@ -65,7 +65,7 @@ class DeviceConfigPanel(wx.Panel):
 		self.address_mode_gpib = wx.RadioButton(self, label='GPIB')
 		gpib_box.Add(self.address_mode_gpib)
 
-		gpib_sizer = wx.FlexGridSizer(rows=3, cols=2, hgap=5)
+		gpib_sizer = wx.FlexGridSizer(3, 2, 5)
 		gpib_box.Add(gpib_sizer, flag=wx.EXPAND)
 
 		gpib_sizer.Add(wx.StaticText(self, label='Board:'),

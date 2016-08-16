@@ -34,7 +34,7 @@ class LinSpaceConfigPanel(wx.Panel):
 		panel_box = wx.BoxSizer(wx.VERTICAL)
 
 		## Config.
-		config_sizer = wx.FlexGridSizer(rows=3, cols=2)
+		config_sizer = wx.FlexGridSizer(3, 2)
 		config_sizer.AddGrowableCol(1, 1)
 		panel_box.Add(config_sizer, proportion=1, flag=wx.EXPAND)
 
@@ -85,7 +85,7 @@ class ArbitraryConfigPanel(wx.Panel):
 		panel_box = wx.BoxSizer(wx.VERTICAL)
 
 		## Config.
-		config_sizer = wx.FlexGridSizer(rows=1, cols=2)
+		config_sizer = wx.FlexGridSizer(1, 2)
 		config_sizer.AddGrowableCol(1, 1)
 		panel_box.Add(config_sizer, proportion=1, flag=wx.EXPAND)
 

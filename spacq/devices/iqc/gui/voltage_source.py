@@ -47,7 +47,7 @@ class VoltageSourceTunerDialog(Dialog):
 		autotuning_box = wx.StaticBoxSizer(autotuning_static_box, wx.VERTICAL)
 		tuning_box.Add(autotuning_box, flag=wx.EXPAND|wx.ALL, border=5)
 
-		autotuning_sizer = wx.FlexGridSizer(rows=3, cols=2, hgap=5)
+		autotuning_sizer = wx.FlexGridSizer(3, 2, 5)
 		autotuning_box.Add(autotuning_sizer, flag=wx.CENTER)
 
 		autotuning_sizer.Add(wx.StaticText(self, label='Resource name:'),
@@ -72,7 +72,7 @@ class VoltageSourceTunerDialog(Dialog):
 		autotuning_box.Add(self.autotune_button, flag=wx.EXPAND)
 
 		### Manual tune.
-		tuning_sizer = wx.FlexGridSizer(rows=2, cols=2, hgap=5)
+		tuning_sizer = wx.FlexGridSizer(2, 2, 5)
 		tuning_box.Add(tuning_sizer, flag=wx.CENTER)
 
 		tuning_sizer.Add(wx.StaticText(self, label='Gain:'),
@@ -176,7 +176,7 @@ class VoltageSourceSettingsPanel(wx.Panel):
 		panel_box = wx.BoxSizer(wx.VERTICAL)
 
 		## Ports.
-		ports_box = wx.FlexGridSizer(rows=8, cols=2)
+		ports_box = wx.FlexGridSizer(8, 2)
 		panel_box.Add(ports_box)
 
 		for port in range(16):

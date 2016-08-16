@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 from setuptools import setup, find_packages
 
@@ -14,8 +14,6 @@ setup(
 	author_email='diouchtc@uwaterloo.ca',
 	maintainer='Grant Watson',
 	maintainer_email='ghwatson@uwaterloo.ca',
-	updator='Joshua Voskamp',
-	updator_email='jvoskamp@uwaterloo.ca',
 	description='Package for interfacing with devices and building user '
 			'interfaces.',
 	license='BSD',

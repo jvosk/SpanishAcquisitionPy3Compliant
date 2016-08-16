@@ -1,17 +1,14 @@
-#!/usr/bin/env python2
-
 import logging
 logging.basicConfig(level=logging.WARNING)
 
 import wx
-
 from spacq import VERSION
 from spacq.gui.action.data_capture import DataCapturePanel
 from spacq.gui.action.smooth_reset import SmoothResetPanel
 from spacq.gui.config.devices import DeviceConfigFrame
 from spacq.gui.config.pulse import PulseProgramFrame
 from spacq.gui.config.variables import VariablesPanel
-from spacq.gui.display.plot.live.list import ListMeasurementFrame
+#from spacq.gui.display.plot.live.list import ListMeasurementFrame
 from spacq.gui.display.plot.live.scalar import ScalarMeasurementFrame
 from spacq.gui.global_store import GlobalStore
 from spacq.gui.tool.box import MessageDialog
@@ -82,8 +79,8 @@ class AcquisitionApp(wx.App):
 		item = submenu.Append(wx.ID_ANY, 'Add &scalar...')
 		self.Bind(wx.EVT_MENU, self.OnMenuConfigurationMeasurementsAddScalar, item)
 
-		item = submenu.Append(wx.ID_ANY, 'Add &list...')
-		self.Bind(wx.EVT_MENU, self.OnMenuConfigurationMeasurementsAddList, item)
+		#item = submenu.Append(wx.ID_ANY, 'Add &list...')
+		#self.Bind(wx.EVT_MENU, self.OnMenuConfigurationMeasurementsAddList, item)
 
 		### Pulse program.
 		item = menu.Append(wx.ID_ANY, '&Pulse program...')
@@ -122,9 +119,9 @@ class AcquisitionApp(wx.App):
 		measurement_frame = ScalarMeasurementFrame(self.acq_frame, self.global_store)
 		measurement_frame.Show()
 
-	def OnMenuConfigurationMeasurementsAddList(self, evt=None):
-		measurement_frame = ListMeasurementFrame(self.acq_frame, self.global_store)
-		measurement_frame.Show()
+	#def OnMenuConfigurationMeasurementsAddList(self, evt=None):
+	#	measurement_frame = ListMeasurementFrame(self.acq_frame, self.global_store)
+	#	measurement_frame.Show()
 
 	def OnMenuConfigurationPulseProgram(self, evt=None):
 		def close_callback():

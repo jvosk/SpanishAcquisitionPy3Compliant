@@ -1,7 +1,7 @@
 from functools import partial
 from threading import Thread
 import wx
-from wx.dataview import TreeListCtrl
+from wx.lib.agw.hypertreelist import HyperTreeList
 
 from spacq.interface.resources import NotReadable
 from spacq.interface.units import IncompatibleDimensions
@@ -20,7 +20,7 @@ class ResourceFetcher(Thread):
 
 	def __init__(self, items, getter, callback, *args, **kwargs):
 		"""
-		items: List of TreeListCtrl items.
+		items: List of HyperTreeList items.
 		getter: Given an item, returns a Resource or None.
 		callback: Is called with the item and the value of the resource.
 		"""
@@ -58,13 +58,13 @@ class ItemData(object):
 		self.fetched = False
 
 
-class ResourceTree(TreeListCtrl):
+class ResourceTree(HyperTreeList):
 	"""
 	A tree list to display an hierarchy of subdevices and resources.
 	"""
 
 	def __init__(self, parent, *args, **kwargs):
-		TreeListCtrl.__init__(self, parent, *args,
+		HyperTreeList.__init__(self, parent, *args,
 				style=wx.TR_DEFAULT_STYLE|wx.TR_FULL_ROW_HIGHLIGHT|wx.TR_HIDE_ROOT,
 				**kwargs)
 
