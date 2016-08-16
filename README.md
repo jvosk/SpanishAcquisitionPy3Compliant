@@ -49,3 +49,6 @@ Extract that tarball, then inside from a terminal while in that directory (e.g. 
 _*Note*_: This will take a *long* time. For me, over an hour on a two-core laptop. AFAIK, there are no available pre-built wheels. Much apologies. Such sorry. (Many doge.)
 
 *Note 2*: `python build.py dox etg --nodoc sip build`, like all other commands with respect to Spanish Acquisition, must be run from inside the virtual environment.
+
+
+Make sure to `install libffi-dev`, `pip install cairocffi`
